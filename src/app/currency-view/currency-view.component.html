@@ -1,4 +1,12 @@
 <h2>Валютный курс</h2>
-<button type="button" (click)="makeRequest()">Отправить запрос</button>
 <div *ngIf="loading">Загрузка...</div>
-<pre>{{ data | json }}</pre>
+<currency-submit
+  (loading)="loading = $event"
+  (result)="updateResult($event)"
+></currency-submit>
+
+<div class="row">
+  <p *ngFor="let currency of currencies">
+    {{ currency.label + ": " + currency.rate }}
+  </p>
+</div>

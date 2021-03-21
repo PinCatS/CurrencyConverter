@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyRequestService } from '../currency-request/currency-request.service';
+import { Result } from '../result.model';
+import { Currency } from '../currency-view/currency.model';
 
 @Component({
   selector: 'currency-view',
@@ -7,25 +8,26 @@ import { CurrencyRequestService } from '../currency-request/currency-request.ser
   styleUrls: ['./currency-view.component.css'],
 })
 export class CurrencyViewComponent implements OnInit {
-  data!: Object;
+  result!: Result;
   loading: boolean;
+  currencies!: Currency[];
 
-  constructor(private currencyService: CurrencyRequestService) {
+  constructor() {
     this.loading = false;
+    this.currencies = [];
   }
 
-  makeRequest(): void {
-    this.loading = true;
-    this.currencyService.getCurrencies().subscribe(
-      (data) => {
-        this.data = data;
-        this.loading = false;
-      },
-      (err) => {
-        console.log('Request to get currencies failed.');
-        this.loading = false;
-      }
-    );
+  updateResult(result: Result): void {
+    this.result = result;
+    this.currencies = this.buildCurrenciesList(this.result);
+    //console.log(this.currencies);
+  }
+
+  buildCurrenciesList(result: Result) {
+    return Object.entries(result.rates).map(([label, rate]) => ({
+      label,
+      rate: String(rate),
+    }));
   }
 
   ngOnInit(): void {}
