@@ -1,0 +1,4 @@
+<h2>Валютный курс</h2>
+<button type="button" (click)="makeRequest()">Отправить запрос</button>
+<div *ngIf="loading">Загрузка...</div>
+<pre>{{ data | json }}</pre>
