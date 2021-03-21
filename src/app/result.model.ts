@@ -1,4 +1,4 @@
-export class RequestResult {
+export class Result {
   base: string;
   date: Date;
   rates: Object;
