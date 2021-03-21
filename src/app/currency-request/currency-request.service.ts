@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 export const CURRENCY_SERVICE_API_KEY = '0a2dce81e95e7bfba447228bd00102a8';
 export const CURRENCY_SERVICE__API_URL = 'http://data.fixer.io/api/latest';
@@ -13,9 +12,11 @@ export class CurrencyRequestService {
     @Inject(CURRENCY_SERVICE__API_URL) private apiUrl: string
   ) {}
 
-  getCurrencies(symbols?: string) {
+  getCurrencies(baseCurrency: string, symbols?: string) {
     const options = {
-      params: new HttpParams().append('access_key', this.apiKey),
+      params: new HttpParams()
+        .append('access_key', this.apiKey)
+        .append('base', baseCurrency),
     };
 
     if (symbols && symbols.length > 0) {

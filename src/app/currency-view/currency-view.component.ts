@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Result } from '../result.model';
 import { Currency } from '../currency-view/currency.model';
 
@@ -11,16 +11,21 @@ export class CurrencyViewComponent implements OnInit {
   result!: Result;
   loading: boolean;
   currencies!: Currency[];
+  baseCurrencies: string[];
+  base: string;
+  @Output() onUpdate: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
     this.loading = false;
     this.currencies = [];
+    this.baseCurrencies = ['EUR', 'USD', 'RUB'];
+    this.base = 'EUR';
   }
 
   updateResult(result: Result): void {
+    console.log(result);
     this.result = result;
     this.currencies = this.buildCurrenciesList(this.result);
-    //console.log(this.currencies);
   }
 
   buildCurrenciesList(result: Result) {
@@ -28,6 +33,11 @@ export class CurrencyViewComponent implements OnInit {
       label,
       rate: String(rate),
     }));
+  }
+
+  updateBase(value: string) {
+    this.base = value;
+    this.onUpdate.emit(this.base);
   }
 
   ngOnInit(): void {}

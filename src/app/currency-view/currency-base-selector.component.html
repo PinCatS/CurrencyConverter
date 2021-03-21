@@ -1,0 +1,14 @@
+<form class="form-group">
+  <label for="base">Базовый курс</label>
+  <select
+    class="form-control"
+    id="base"
+    #selectElement
+    (change)="updateBase(selectElement.value)"
+    required
+  >
+    <option *ngFor="let currency of baseCurrencies" [value]="currency">
+      {{ currency }}
+    </option>
+  </select>
+</form>
