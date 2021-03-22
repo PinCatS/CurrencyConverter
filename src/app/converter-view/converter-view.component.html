@@ -5,12 +5,14 @@
     >
     <converter-controller
       (loading)="loading = $event"
-      (error)="showErrorMessage($event)"
+      (loading)="resetResult()"
+      (error)="error = $event"
       (result)="updateResult($event)"
     >
     </converter-controller>
   </form>
   <div class="converter__result">
+    <span class="converter__error" *ngIf="error">{{ getErrorMessage() }}</span>
     <span *ngIf="result" class="result__text">{{
       result.result + " по цене " + result.rate
     }}</span>
