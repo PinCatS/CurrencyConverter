@@ -5,11 +5,13 @@ import { Result } from '../result.model';
 @Component({
   selector: 'currency-submit',
   templateUrl: './currency-submit.component.html',
+  styleUrls: ['./currency-submit.component.css'],
 })
 export class CurrencySubmitComponent implements OnInit {
   @Input() baseCurrency!: string;
   @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() result: EventEmitter<Result> = new EventEmitter<Result>();
+  @Output() error: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private currencyService: CurrencyRequestService) {}
 
@@ -21,12 +23,14 @@ export class CurrencySubmitComponent implements OnInit {
           this.result.emit(new Result(data));
         } else {
           console.error('Request to get currencies failed.', data.error);
+          this.error.emit(data.error);
         }
         this.loading.emit(false);
       },
       (err: any) => {
         console.error('Request to get currencies failed.', err);
-        this.loading.emit(false);
+        this.loading.emit(err);
+        this.error.emit(true);
       }
     );
   }

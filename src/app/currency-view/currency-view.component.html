@@ -1,12 +1,17 @@
 <div class="container">
   <h2>Валютный курс</h2>
-  <div *ngIf="loading">Загрузка...</div>
   <currency-submit
     (loading)="loading = $event"
+    (loading)="resetResults()"
     (result)="updateResult($event)"
+    (error)="error = $event"
   ></currency-submit>
 
-  <section class="currencies">
+  <div class="currencies__loader" *ngIf="loading">Загрузка...</div>
+
+  <div class="currencies__error" *ngIf="error">{{ getErrorMessage() }}</div>
+
+  <section *ngIf="currencies.length > 0" class="currencies">
     <div class="two-column currencies__header">
       <p class="currencies__label-title">валюта</p>
       <p class="currencies__value-title">цена</p>

@@ -4,6 +4,17 @@
   padding-top: 40px;
 }
 
+.currencies__loader {
+  margin: 12px 0 0 0;
+}
+
+.currencies__error {
+  display: block;
+  margin: 20px 0 0;
+  color: blue;
+  font-size: 18px;
+}
+
 .currencies {
   max-width: 200px;
   margin: 0;

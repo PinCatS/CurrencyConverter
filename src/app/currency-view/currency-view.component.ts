@@ -19,18 +19,27 @@ import { Currency } from '../currency-view/currency.model';
 export class CurrencyViewComponent implements OnInit {
   result!: Result;
   loading: boolean;
+  error: any;
   currencies!: Currency[];
   @Output() onUpdate: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
     this.loading = false;
+    this.error = null;
     this.currencies = [];
   }
 
   updateResult(result: Result): void {
-    console.log(result);
+    this.currencies = [];
     this.result = result;
     this.currencies = this.buildCurrenciesList(this.result);
+  }
+
+  resetResults() {
+    if (this.loading == true) {
+      this.error = null;
+      this.currencies = [];
+    }
   }
 
   buildCurrenciesList(result: Result) {
@@ -38,6 +47,22 @@ export class CurrencyViewComponent implements OnInit {
       label,
       rate: String(rate),
     }));
+  }
+
+  getErrorMessage(): string {
+    let errorMessage = '';
+    if (this.error != null) {
+      switch (this.error.code) {
+        case 105:
+          errorMessage =
+            'Для выбора другой базы, подпишитесь на премиум подписку';
+          break;
+        default:
+          errorMessage =
+            'Что-то пошло не так. Попробуйте ещё раз через некоторое время';
+      }
+    }
+    return errorMessage;
   }
 
   ngOnInit(): void {}
