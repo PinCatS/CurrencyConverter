@@ -1,7 +1,7 @@
-<form class="form-group">
-  <label for="base">Базовый курс</label>
+<form class="form currencies__form">
+  <label class="currencies__base-input-label" for="base">Базовый курс</label>
   <select
-    class="form-control"
+    class="currencies__base-input"
     id="base"
     #selectElement
     (change)="updateBase(selectElement.value)"

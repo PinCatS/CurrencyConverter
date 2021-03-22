@@ -1,12 +1,28 @@
-<h2>Валютный курс</h2>
-<div *ngIf="loading">Загрузка...</div>
-<currency-submit
-  (loading)="loading = $event"
-  (result)="updateResult($event)"
-></currency-submit>
+<div class="container">
+  <h2>Валютный курс</h2>
+  <currency-submit
+    (loading)="loading = $event"
+    (loading)="resetResults()"
+    (result)="updateResult($event)"
+    (error)="error = $event"
+  ></currency-submit>
 
-<div class="row">
-  <p *ngFor="let currency of currencies">
-    {{ currency.label + ": " + currency.rate }}
-  </p>
+  <div class="currencies__loader" *ngIf="loading">Загрузка...</div>
+
+  <div class="currencies__error" *ngIf="error">{{ getErrorMessage() }}</div>
+
+  <section *ngIf="currencies.length > 0" class="currencies">
+    <div class="two-column currencies__header">
+      <p class="currencies__label-title">валюта</p>
+      <p class="currencies__value-title">цена</p>
+    </div>
+    <ul class="currencies__list">
+      <li class="currencies__item" *ngFor="let currency of currencies">
+        <div class="two-column currencies__rate">
+          <p class="currencies__label">{{ currency.label }}</p>
+          <p class="currencies__value">{{ currency.rate }}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
 </div>
