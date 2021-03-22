@@ -24,6 +24,7 @@ export class ConverterControllerComponent implements OnInit {
       const command = this.command.getCommand();
       if (command.from && command.to && command.amount) {
         this.makeConversion(command.from, command.to, command.amount);
+        this.command = new Command();
       }
     }
   }
