@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConversionResult } from './conversion-result.model';
 
 @Component({
@@ -9,11 +9,12 @@ import { ConversionResult } from './conversion-result.model';
 export class ConverterViewComponent implements OnInit {
   loading: boolean;
   error: any;
-  result!: ConversionResult;
+  result: ConversionResult | null;
 
   constructor() {
     this.loading = false;
     this.error = false;
+    this.result = null;
   }
 
   updateResult(result: ConversionResult) {

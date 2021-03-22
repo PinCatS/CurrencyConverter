@@ -1,3 +1,18 @@
+.converter {
+  margin-bottom: 40px;
+}
+
+.converter__result {
+  min-height: 40px;
+}
+
+.result__text {
+  display: inline-block;
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: grey;
+}
+
 .form-input {
   display: block;
   max-width: 200px;
