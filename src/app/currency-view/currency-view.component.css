@@ -1,0 +1,50 @@
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.currencies {
+  max-width: 200px;
+  margin: 0;
+  padding: 40px 0 20px;
+}
+
+.currencies__list {
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.two-column {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.currencies__header {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 0 4px;
+  border-bottom: 2px solid #64646464;
+}
+
+.currencies__label-title {
+  margin: 0 0 0 8px;
+}
+
+.currencies__value-title {
+  margin: 0 8px 0;
+}
+
+.currencies__rate {
+  padding: 4px 0 4px;
+}
+
+.currencies__label {
+  margin: 0 0 0 8px;
+}
+
+.currencies__value {
+  margin: 0 8px 0;
+}
