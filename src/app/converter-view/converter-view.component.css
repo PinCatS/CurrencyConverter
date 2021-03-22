@@ -2,6 +2,13 @@
   margin-bottom: 40px;
 }
 
+.converter__error {
+  display: block;
+  margin: 12px 0 0;
+  color: blue;
+  font-size: 14px;
+}
+
 .converter__result {
   min-height: 40px;
 }

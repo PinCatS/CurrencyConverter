@@ -21,9 +21,25 @@ export class ConverterViewComponent implements OnInit {
     this.result = result;
   }
 
-  showErrorMessage(error: any): string {
+  resetResult() {
+    if (this.loading == true) {
+      this.error = null;
+      this.result = null;
+    }
+  }
+
+  getErrorMessage(): string {
     let errorMessage = '';
     if (this.error != null) {
+      switch (this.error.code) {
+        case 105:
+          errorMessage =
+            'Для выбора другой базы, подпишитесь на премиум подписку';
+          break;
+        default:
+          errorMessage =
+            'Что-то пошло не так. Попробуйте ещё раз через некоторое время';
+      }
     }
     return errorMessage;
   }
