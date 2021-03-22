@@ -1,0 +1,11 @@
+<input
+  id="command"
+  type="text"
+  class="form-input"
+  name="command"
+  placeholder="1000 usd to rub"
+  maxlength="40"
+  #inputElement
+  (input)="processCommand(inputElement.value)"
+  ngModel
+/>

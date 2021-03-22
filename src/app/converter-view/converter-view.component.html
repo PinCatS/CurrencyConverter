@@ -1,0 +1,16 @@
+<div class="converter">
+  <form>
+    <label class="converter__input-label" for="command"
+      >Currency converter</label
+    >
+    <converter-controller
+      (loading)="loading = $event"
+      (error)="showErrorMessage($event)"
+      (result)="updateResult($event)"
+    >
+    </converter-controller>
+  </form>
+  <div class="converter__result">
+    <p>{{ result.result + " at rate " + result.rate }}</p>
+  </div>
+</div>
