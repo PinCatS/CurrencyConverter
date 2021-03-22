@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 export const CURRENCY_SERVICE_API_KEY = '0a2dce81e95e7bfba447228bd00102a8';
-export const CURRENCY_SERVICE__API_URL = 'http://data.fixer.io/api/latest';
+export const CURRENCY_SERVICE__API_URL = 'https://data.fixer.io/api/latest';
 
 @Injectable()
 export class CurrencyRequestService {
