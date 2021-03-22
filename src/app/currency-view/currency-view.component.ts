@@ -2,15 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Result } from '../result.model';
 import { Currency } from '../currency-view/currency.model';
 
-/**
- * TODO:
- * 1. Style the list: list for mobile, columns for desctop
- * 2. Style the dropdown
- * 3. Add error message in case of other bases
- * 4. Add input for converter
- * 5. Do convertion
- */
-
 @Component({
   selector: 'currency-view',
   templateUrl: './currency-view.component.html',
