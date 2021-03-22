@@ -9,7 +9,7 @@
 
   <div class="currencies__loader" *ngIf="loading">Загрузка...</div>
 
-  <div class="currencies__error" *ngIf="error">{{ getErrorMessage() }}</div>
+  <span class="currencies__error" *ngIf="error">{{ getErrorMessage() }}</span>
 
   <section *ngIf="currencies.length > 0" class="currencies">
     <div class="two-column currencies__header">
