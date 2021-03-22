@@ -22,13 +22,16 @@ export class CurrencySubmitComponent implements OnInit {
         if (data.success) {
           this.result.emit(new Result(data));
         } else {
-          console.error('Request to get currencies failed.', data.error);
+          console.error(
+            'Request to get currencies failed. API response',
+            data.error
+          );
           this.error.emit(data.error);
         }
         this.loading.emit(false);
       },
       (err: any) => {
-        console.error('Request to get currencies failed.', err);
+        console.error('Request to get currencies failed. Http response', err);
         this.loading.emit(err);
         this.error.emit(true);
       }

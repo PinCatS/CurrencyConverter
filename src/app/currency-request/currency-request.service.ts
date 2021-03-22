@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 export const CURRENCY_SERVICE_API_KEY = '0a2dce81e95e7bfba447228bd00102a8';
-export const CURRENCY_SERVICE__API_URL = 'https://data.fixer.io/api/latest';
+export const CURRENCY_SERVICE__API_URL = 'https://data.fixer.io/api';
 
 @Injectable()
 export class CurrencyRequestService {
@@ -23,6 +23,18 @@ export class CurrencyRequestService {
       options.params.append('symbols', symbols);
     }
 
-    return this.http.get(this.apiUrl, options);
+    return this.http.get(this.apiUrl + '/latest', options);
+  }
+
+  convert(from: string, to: string, amount: number) {
+    const options = {
+      params: new HttpParams()
+        .append('access_key', this.apiKey)
+        .append('from', from)
+        .append('to', to)
+        .append('amount', amount.toString()),
+    };
+
+    return this.http.get(this.apiUrl + '/convert', options);
   }
 }

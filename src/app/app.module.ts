@@ -8,6 +8,8 @@ import { CurrencyViewComponent } from './currency-view/currency-view.component';
 import { CurrencySubmitComponent } from './currency-view/currency-submit.component';
 import { CurrencyBaseSelectorComponent } from './currency-view/currency-base-selector.component';
 import { currencyServiceInjectables } from './currency-request/currency-request.injectables';
+import { ConverterViewComponent } from './converter-view/converter-view.component';
+import { ConverterControllerComponent } from './converter-view/converter-controller.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { currencyServiceInjectables } from './currency-request/currency-request.
     CurrencyViewComponent,
     CurrencySubmitComponent,
     CurrencyBaseSelectorComponent,
+    ConverterViewComponent,
+    ConverterControllerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [currencyServiceInjectables],
