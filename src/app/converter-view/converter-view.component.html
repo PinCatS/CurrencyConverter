@@ -1,5 +1,5 @@
 <div class="converter">
-  <form>
+  <form class="converter__form">
     <label class="converter__input-label" for="command"
       >Currency converter</label
     >
@@ -11,6 +11,8 @@
     </converter-controller>
   </form>
   <div class="converter__result">
-    <p>{{ result.result + " at rate " + result.rate }}</p>
+    <span *ngIf="result" class="result__text">{{
+      result.result + " по цене " + result.rate
+    }}</span>
   </div>
 </div>

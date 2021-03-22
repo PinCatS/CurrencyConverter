@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { currenciesList } from '../currencies.list';
 
 @Component({
   selector: 'currency-base-selector',
@@ -11,8 +12,8 @@ export class CurrencyBaseSelectorComponent implements OnInit {
   @Output() onUpdate: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {
-    this.baseCurrencies = ['EUR', 'USD', 'RUB'];
-    this.base = 'EUR';
+    this.baseCurrencies = currenciesList.map((item) => item.toUpperCase());
+    this.base = this.baseCurrencies[0];
   }
 
   updateBase(value: string) {

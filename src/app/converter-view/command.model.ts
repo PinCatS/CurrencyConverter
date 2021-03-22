@@ -1,4 +1,4 @@
-import { currenciesList } from './currencies.list';
+import { currenciesList } from '../currencies.list';
 
 interface ICommand {
   from: string | null;

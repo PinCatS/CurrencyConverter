@@ -3,6 +3,7 @@ export class ConversionResult {
   result: number;
 
   constructor(rate: number, result: number) {
-    (this.rate = rate), (this.result = result);
+    this.rate = rate;
+    this.result = result;
   }
 }
