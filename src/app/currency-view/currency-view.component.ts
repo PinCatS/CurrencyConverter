@@ -8,6 +8,8 @@ import { Currency } from '../currency-view/currency.model';
   styleUrls: ['./currency-view.component.css'],
 })
 export class CurrencyViewComponent implements OnInit {
+  p: number = 1;
+  maxSize: number = 5;
   result!: Result;
   loading: boolean;
   error: any;

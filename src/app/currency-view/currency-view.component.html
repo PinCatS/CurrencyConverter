@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container currencies">
   <h2>Валютный курс</h2>
   <currency-submit
     (loading)="loading = $event"
@@ -11,18 +11,31 @@
 
   <span class="currencies__error" *ngIf="error">{{ getErrorMessage() }}</span>
 
-  <section *ngIf="currencies.length > 0" class="currencies">
-    <div class="two-column currencies__header">
-      <p class="currencies__label-title">валюта</p>
-      <p class="currencies__value-title">цена</p>
+  <section *ngIf="currencies.length > 0">
+    <div class="currencies__table">
+      <div class="two-column currencies__header">
+        <p class="currencies__label-title">валюта</p>
+        <p class="currencies__value-title">цена</p>
+      </div>
+      <ul class="currencies__list">
+        <li
+          class="currencies__item"
+          *ngFor="
+            let currency of currencies
+              | paginate: { itemsPerPage: 10, currentPage: p }
+          "
+        >
+          <div class="two-column currencies__rate">
+            <p class="currencies__label">{{ currency.label }}</p>
+            <p class="currencies__value">{{ currency.rate }}</p>
+          </div>
+        </li>
+      </ul>
     </div>
-    <ul class="currencies__list">
-      <li class="currencies__item" *ngFor="let currency of currencies">
-        <div class="two-column currencies__rate">
-          <p class="currencies__label">{{ currency.label }}</p>
-          <p class="currencies__value">{{ currency.rate }}</p>
-        </div>
-      </li>
-    </ul>
+    <pagination-controls
+      class="currencies__pagination"
+      (pageChange)="p = $event"
+      [maxSize]="maxSize"
+    ></pagination-controls>
   </section>
 </div>
