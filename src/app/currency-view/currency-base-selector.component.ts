@@ -21,6 +21,7 @@ export class CurrencyBaseSelectorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.baseCurrencies, this.base);
     this.onUpdate.emit(this.base);
   }
 }

@@ -18,3 +18,7 @@
 .form-input:focus {
   outline-color: #323232;
 }
+
+.converter__input-label {
+  margin: 40px 12px 20px 0;
+}
